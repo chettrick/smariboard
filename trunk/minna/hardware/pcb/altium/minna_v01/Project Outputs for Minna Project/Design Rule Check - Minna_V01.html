@@ -1,0 +1,635 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body {
+			font-family : verdana;
+		}
+		td, th {
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;
+		}
+		th {
+			background-color : #A6CAF0;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+		}
+		
+		.DRC_summary_header {							
+			padding-bottom : 0.1em;
+			border : 0px solid black;							
+			width: 100%;
+                        align: right;
+                        
+		}
+
+		.DRC_summary_header_col1, 
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3
+		{
+			color : black;
+			font-size:150%;
+                        padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2: 0em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top;
+			font-weight: bold;				
+		}
+		
+		.DRC_summary_header_col1 	
+		{		                       
+			text-align: right;
+                        width: auto;	
+		}
+
+		.DRC_summary_header_col2 	
+		{		
+			text-align: center;	
+		}
+
+		.DRC_summary_header_col3 	
+		{		
+			text-align: left;	
+		}
+
+
+		
+		.header_holder
+		{
+		Width = 100%;
+		border = 0px solid green;
+		padding = 0;
+		}
+		
+		
+		
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+                {
+			left:0;
+			top:0;
+			padding-top : 0.1em;			
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top
+
+		}
+		.front_matter {	
+			
+			margin-top: 5px;
+ 			margin-left: 0px;					 			
+ 			horizontal-align: left;
+		}
+				
+		
+		.front_matter_column1 {
+			width : 10em;	
+			text-align  : right;
+			padding-right:0.1em;
+			
+		}
+		
+		.front_matter_column2 {
+                        width: 0.1em;
+			align: center;
+			text-align : center;
+			margin-right  : 0.1em;	
+			margin-left   : 0.1em;
+		}
+		.front_matter_column3 {
+			width         : auto;  
+			text-align    : left;	
+			margin-right  : 0.5em;				
+		}
+		
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script></head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\PROGRAM FILES\ALTIUM DESIGNER SUMMER 09\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td Style="width:70%">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">17/12/2011</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">12:02:14 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:27</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc" class="file"><acronym title="C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc">C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td Style="Width:30%">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations</td>
+<td class="DRC_summary_header_col2">:</td>
+<td class="DRC_summary_header_col3" style="color : red">88</td></tr>
+</table>
+</td>
+</table>
+<hr><a name="IDATAQNO"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAFBQNO">Clearance Constraint (Gap=7mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDALBQNO">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDARBQNO">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAXBQNO">Silkscreen Over Component Pads (Clearance=5mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA3BQNO">Minimum Solder Mask Sliver (Gap=4mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDADCQNO">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAJCQNO">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAPCQNO">Hole Size Constraint (Min=10mil) (Max=250mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAVCQNO">SMD To Corner (Distance=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDA1CQNO">Acute Angle Constraint (Minimum=90.000) (Disabled)(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDABDQNO">Minimum Annular Ring (Minimum=10mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAHDQNO">Minimum Annular Ring (Minimum=5mil) ((IsVia))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDANDQNO">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">88</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAJERNO">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAPERNO">Power Plane Connect Rule(Relief Connect )(Expansion=15mil) (Conductor Width=15mil) (Air Gap=15mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDAVERNO">Power Plane Connect Rule(Direct Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) ((IsVia))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDA1ERNO">Width Constraint (Min=10mil) (Max=100mil) (Preferred=15mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDABFRNO">Width Constraint (Min=20mil) (Max=100mil) (Preferred=50mil) (InNetClass('Power'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAHFRNO">Clearance Constraint (Gap=0mil) ((InComponent('X1'))),(InNet('NetR8_1') AND InNet('NetR8_2'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDANFRNO">Clearance Constraint (Gap=5.8mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDATFRNO">Clearance Constraint (Gap=11.811mil) (All),((InPolygon))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">88</td>
+</tr>
+</table><br><hr><a name="IDANDQNO"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5539.764mil|Location1.Y=4301.18mil|Location2.Y=4326.772mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5539.764mil|Location1.Y=4301.18mil|Location2.Y=4326.772mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U6-13 (2589.764,1351.18mil) And Pad U6-14 (2589.764,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.52mil|Location2.X=4655.906mil|Location1.Y=3525mil|Location2.Y=3500mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.52mil|Location2.X=4655.906mil|Location1.Y=3525mil|Location2.Y=3500mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad D2-1 (1667.52,575mil) And Pad U1-6 (1705.906,550mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3895.434mil|Location2.X=3895.434mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3895.434mil|Location2.X=3895.434mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R10-2 (945.434,120mil) And Pad R9-2 (945.434,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3664.566mil|Location1.Y=4400mil|Location2.Y=4470mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3664.566mil|Location1.Y=4400mil|Location2.Y=4470mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R1-2 (714.566,1450mil) And Pad C20-2 (714.566,1520mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3715.434mil|Location2.X=3715.434mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3715.434mil|Location2.X=3715.434mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R23-2 (765.434,120mil) And Pad R24-2 (765.434,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3535.434mil|Location2.X=3535.434mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3535.434mil|Location2.X=3535.434mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R21-2 (585.434,120mil) And Pad R22-2 (585.434,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284.566mil|Location2.X=3284.566mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284.566mil|Location2.X=3284.566mil|Location1.Y=3070mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R20-2 (334.566,120mil) And Pad R19-2 (334.566,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3544.629mil|Location2.X=3575.434mil|Location1.Y=4510mil|Location2.Y=4470mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3544.629mil|Location2.X=3575.434mil|Location1.Y=4510mil|Location2.Y=4470mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C23-1 (594.629,1560mil) And Pad R3-2 (625.434,1520mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5539.764mil|Location1.Y=4224.41mil|Location2.Y=4301.18mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5539.764mil|Location1.Y=4224.41mil|Location2.Y=4301.18mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U6-10 (2589.764,1274.41mil) And Pad U6-13 (2589.764,1351.18mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5760.236mil|Location2.X=5760.236mil|Location1.Y=4250mil|Location2.Y=4326.772mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5760.236mil|Location2.X=5760.236mil|Location1.Y=4250mil|Location2.Y=4326.772mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U6-4 (2810.236,1300mil) And Pad U6-1 (2810.236,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4903.15mil|Location2.X=4980mil|Location1.Y=3250mil|Location2.Y=3254.567mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4903.15mil|Location2.X=4980mil|Location1.Y=3250mil|Location2.Y=3254.567mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U7-5 (1953.15,300mil) And Pad C7-2 (2030,304.567mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5760.236mil|Location2.X=5770.433mil|Location1.Y=4326.772mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5760.236mil|Location2.X=5770.433mil|Location1.Y=4326.772mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U6-1 (2810.236,1376.772mil) And Pad C6-2 (2820.433,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3175.433mil|Location2.X=3284.566mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3175.433mil|Location2.X=3284.566mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C10-2 (225.433,190mil) And Pad R19-2 (334.566,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4020mil|Location2.X=4099.567mil|Location1.Y=4454.881mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4020mil|Location2.X=4099.567mil|Location1.Y=4454.881mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C24-1 (1070,1504.881mil) And Pad C11-2 (1149.567,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3735.434mil|Location1.Y=4400mil|Location2.Y=4330mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3735.434mil|Location1.Y=4400mil|Location2.Y=4330mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R1-2 (714.566,1450mil) And Pad C8-2 (785.434,1380mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.52mil|Location2.X=4690.433mil|Location1.Y=3175mil|Location2.Y=3245mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.52mil|Location2.X=4690.433mil|Location1.Y=3175mil|Location2.Y=3245mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad D1-1 (1667.52,225mil) And Pad C1-2 (1740.433,295mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5760.236mil|Location2.X=5905.512mil|Location1.Y=4326.772mil|Location2.Y=4300mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5760.236mil|Location2.X=5905.512mil|Location1.Y=4326.772mil|Location2.Y=4300mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U6-1 (2810.236,1376.772mil) And Pad U4-5 (2955.512,1350mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3849.055mil|Location2.X=4020mil|Location1.Y=4439.134mil|Location2.Y=4454.881mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3849.055mil|Location2.X=4020mil|Location1.Y=4439.134mil|Location2.Y=4454.881mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U12-3 (899.055,1489.134mil) And Pad C24-1 (1070,1504.881mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3849.055mil|Location2.X=3939.764mil|Location1.Y=4439.134mil|Location2.Y=4326.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3849.055mil|Location2.X=3939.764mil|Location1.Y=4439.134mil|Location2.Y=4326.771mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U12-3 (899.055,1489.134mil) And Pad U11-14 (989.764,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4124.567mil|Location2.X=4345.433mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4124.567mil|Location2.X=4345.433mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R5-1 (1174.567,190mil) And Pad R4-1 (1395.433,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620mil|Location2.X=5839.174mil|Location1.Y=3725.433mil|Location2.Y=3748.032mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620mil|Location2.X=5839.174mil|Location1.Y=3725.433mil|Location2.Y=3748.032mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C3-2 (2670,775.433mil) And Pad U3-7 (2889.174,798.032mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5139.764mil|Location2.X=5299.567mil|Location1.Y=4326.772mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5139.764mil|Location2.X=5299.567mil|Location1.Y=4326.772mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U5-14 (2189.764,1376.772mil) And Pad C5-2 (2349.567,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4560.236mil|Location2.X=4570.433mil|Location1.Y=4173.228mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4560.236mil|Location2.X=4570.433mil|Location1.Y=4173.228mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U9-14 (1610.236,1223.228mil) And Pad C9-2 (1620.433,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4975.433mil|Location2.X=5190.158mil|Location1.Y=3710mil|Location2.Y=3763.78mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4975.433mil|Location2.X=5190.158mil|Location1.Y=3710mil|Location2.Y=3763.78mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C2-2 (2025.433,760mil) And Pad U2-8 (2240.158,813.78mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5905.512mil|Location2.X=6064.567mil|Location1.Y=4300mil|Location2.Y=4470mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5905.512mil|Location2.X=6064.567mil|Location1.Y=4300mil|Location2.Y=4470mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U4-5 (2955.512,1350mil) And Pad C4-2 (3114.567,1520mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3507.796mil|Location2.X=3575.434mil|Location1.Y=4195.158mil|Location2.Y=4470mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3507.796mil|Location2.X=3575.434mil|Location1.Y=4195.158mil|Location2.Y=4470mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U8-20 (557.796,1245.158mil) And Pad R3-2 (625.434,1520mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3715.434mil|Location2.X=3755.906mil|Location1.Y=3140mil|Location2.Y=3625.984mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3715.434mil|Location2.X=3755.906mil|Location1.Y=3140mil|Location2.Y=3625.984mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R24-2 (765.434,190mil) And Pad U10-24 (805.906,675.984mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3664.566mil|Location1.Y=4470mil|Location2.Y=4470mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3664.566mil|Location1.Y=4470mil|Location2.Y=4470mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R3-2 (625.434,1520mil) And Pad C20-2 (714.566,1520mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3535.434mil|Location2.X=3715.434mil|Location1.Y=3070mil|Location2.Y=3070mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3535.434mil|Location2.X=3715.434mil|Location1.Y=3070mil|Location2.Y=3070mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R21-2 (585.434,120mil) And Pad R23-2 (765.434,120mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3715.434mil|Location2.X=3895.434mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3715.434mil|Location2.X=3895.434mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R24-2 (765.434,190mil) And Pad R9-2 (945.434,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3735.434mil|Location2.X=3939.764mil|Location1.Y=4330mil|Location2.Y=4326.771mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3735.434mil|Location2.X=3939.764mil|Location1.Y=4330mil|Location2.Y=4326.771mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C8-2 (785.434,1380mil) And Pad U11-14 (989.764,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4690.433mil|Location2.X=4903.15mil|Location1.Y=3245mil|Location2.Y=3250mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4690.433mil|Location2.X=4903.15mil|Location1.Y=3245mil|Location2.Y=3250mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C1-2 (1740.433,295mil) And Pad U7-5 (1953.15,300mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5760.236mil|Location1.Y=4326.772mil|Location2.Y=4326.772mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5760.236mil|Location1.Y=4326.772mil|Location2.Y=4326.772mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U6-14 (2589.764,1376.772mil) And Pad U6-1 (2810.236,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3895.434mil|Location2.X=4124.567mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3895.434mil|Location2.X=4124.567mil|Location1.Y=3140mil|Location2.Y=3140mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R9-2 (945.434,190mil) And Pad R5-1 (1174.567,190mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284.566mil|Location2.X=3535.434mil|Location1.Y=3070mil|Location2.Y=3070mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3284.566mil|Location2.X=3535.434mil|Location1.Y=3070mil|Location2.Y=3070mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R20-2 (334.566,120mil) And Pad R21-2 (585.434,120mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4655.906mil|Location2.X=4690.433mil|Location1.Y=3500mil|Location2.Y=3245mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4655.906mil|Location2.X=4690.433mil|Location1.Y=3500mil|Location2.Y=3245mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U1-6 (1705.906,550mil) And Pad C1-2 (1740.433,295mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5299.567mil|Location2.X=5539.764mil|Location1.Y=4410mil|Location2.Y=4326.772mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5299.567mil|Location2.X=5539.764mil|Location1.Y=4410mil|Location2.Y=4326.772mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C5-2 (2349.567,1460mil) And Pad U6-14 (2589.764,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4975.433mil|Location2.X=4980mil|Location1.Y=3710mil|Location2.Y=3254.567mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4975.433mil|Location2.X=4980mil|Location1.Y=3710mil|Location2.Y=3254.567mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C2-2 (2025.433,760mil) And Pad C7-2 (2030,304.567mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.158mil|Location2.X=5620mil|Location1.Y=3763.78mil|Location2.Y=3725.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5190.158mil|Location2.X=5620mil|Location1.Y=3763.78mil|Location2.Y=3725.433mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U2-8 (2240.158,813.78mil) And Pad C3-2 (2670,775.433mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4099.567mil|Location2.X=4570.433mil|Location1.Y=4410mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4099.567mil|Location2.X=4570.433mil|Location1.Y=4410mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C11-2 (1149.567,1460mil) And Pad C9-2 (1620.433,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4345.433mil|Location2.X=4617.52mil|Location1.Y=3140mil|Location2.Y=3175mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4345.433mil|Location2.X=4617.52mil|Location1.Y=3140mil|Location2.Y=3175mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad R4-1 (1395.433,190mil) And Pad D1-1 (1667.52,225mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5620mil|Location1.Y=4224.41mil|Location2.Y=3725.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5539.764mil|Location2.X=5620mil|Location1.Y=4224.41mil|Location2.Y=3725.433mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad U6-10 (2589.764,1274.41mil) And Pad C3-2 (2670,775.433mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4570.433mil|Location2.X=5139.764mil|Location1.Y=4410mil|Location2.Y=4326.772mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4570.433mil|Location2.X=5139.764mil|Location1.Y=4410mil|Location2.Y=4326.772mil|Absolute=True">Un-Routed Net Constraint: Net VCC Between Pad C9-2 (1620.433,1460mil) And Pad U5-14 (2189.764,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3664.566mil|Location1.Y=4260.001mil|Location2.Y=4330mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3664.566mil|Location1.Y=4260.001mil|Location2.Y=4330mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R25-2 (714.566,1310.001mil) And Pad C8-1 (714.566,1380mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3575.434mil|Location1.Y=4329.999mil|Location2.Y=4400mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3575.434mil|Location1.Y=4329.999mil|Location2.Y=4400mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R26-2 (625.434,1379.999mil) And Pad C21-1 (625.434,1450mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.371mil|Location2.X=3623.371mil|Location1.Y=4510mil|Location2.Y=4610mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.371mil|Location2.X=3623.371mil|Location1.Y=4510mil|Location2.Y=4610mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C23-2 (673.371,1560mil) And Pad C22-2 (673.371,1660mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5335.433mil|Location2.X=5360.236mil|Location1.Y=4050mil|Location2.Y=4173.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5335.433mil|Location2.X=5360.236mil|Location1.Y=4050mil|Location2.Y=4173.228mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R6-1 (2385.433,1100mil) And Pad U5-7 (2410.236,1223.228mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3730.945mil|Location1.Y=4330mil|Location2.Y=4439.134mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3730.945mil|Location1.Y=4330mil|Location2.Y=4439.134mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C8-1 (714.566,1380mil) And Pad U12-1 (780.945,1489.134mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4619.567mil|Location2.X=4796.85mil|Location1.Y=3245mil|Location2.Y=3250mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4619.567mil|Location2.X=4796.85mil|Location1.Y=3245mil|Location2.Y=3250mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C1-1 (1669.567,295mil) And Pad U7-2 (1846.85,300mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6094.488mil|Location2.X=6135.433mil|Location1.Y=4300mil|Location2.Y=4470mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6094.488mil|Location2.X=6135.433mil|Location1.Y=4300mil|Location2.Y=4470mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U4-10 (3144.488,1350mil) And Pad C4-1 (3185.433,1520mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4339.764mil|Location2.X=4499.567mil|Location1.Y=4326.772mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4339.764mil|Location2.X=4499.567mil|Location1.Y=4326.772mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U9-7 (1389.764,1376.772mil) And Pad C9-1 (1549.567,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4160.236mil|Location2.X=4170.433mil|Location1.Y=4173.229mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4160.236mil|Location2.X=4170.433mil|Location1.Y=4173.229mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U11-7 (1210.236,1223.228mil) And Pad C11-1 (1220.433,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5360.236mil|Location2.X=5370.433mil|Location1.Y=4173.228mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5360.236mil|Location2.X=5370.433mil|Location1.Y=4173.228mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U5-7 (2410.236,1223.228mil) And Pad C5-1 (2420.433,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4796.85mil|Location2.X=4980mil|Location1.Y=3250mil|Location2.Y=3325.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4796.85mil|Location2.X=4980mil|Location1.Y=3250mil|Location2.Y=3325.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U7-2 (1846.85,300mil) And Pad C7-1 (2030,375.433mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6135.433mil|Location2.X=6206.496mil|Location1.Y=4470mil|Location2.Y=4663.582mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6135.433mil|Location2.X=6206.496mil|Location1.Y=4470mil|Location2.Y=4663.582mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C4-1 (3185.433,1520mil) And Pad SW42-2 (3256.496,1713.582mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.496mil|Location2.X=3623.371mil|Location1.Y=4663.582mil|Location2.Y=4610mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.496mil|Location2.X=3623.371mil|Location1.Y=4663.582mil|Location2.Y=4610mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad SW41-2 (456.496,1713.582mil) And Pad C22-2 (673.371,1660mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5064.567mil|Location2.X=5335.433mil|Location1.Y=4050mil|Location2.Y=4050mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5064.567mil|Location2.X=5335.433mil|Location1.Y=4050mil|Location2.Y=4050mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R7-1 (2114.567,1100mil) And Pad R6-1 (2385.433,1100mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5699.567mil|Location2.X=5760.236mil|Location1.Y=4410mil|Location2.Y=4173.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5699.567mil|Location2.X=5760.236mil|Location1.Y=4410mil|Location2.Y=4173.228mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1 (2749.567,1460mil) And Pad U6-7 (2810.236,1223.228mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4020mil|Location2.X=4170.433mil|Location1.Y=4565.119mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4020mil|Location2.X=4170.433mil|Location1.Y=4565.119mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C24-2 (1070,1615.119mil) And Pad C11-1 (1220.433,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4980mil|Location2.X=5209.842mil|Location1.Y=3325.433mil|Location2.Y=3236.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4980mil|Location2.X=5209.842mil|Location1.Y=3325.433mil|Location2.Y=3236.22mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C7-1 (2030,375.433mil) And Pad U2-24 (2259.842,286.22mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3883.661mil|Location2.X=4020mil|Location1.Y=4751.968mil|Location2.Y=4565.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3883.661mil|Location2.X=4020mil|Location1.Y=4751.968mil|Location2.Y=4565.119mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad J1-2 (933.661,1801.968mil) And Pad C24-2 (1070,1615.119mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3093.504mil|Location2.X=3093.504mil|Location1.Y=4663.582mil|Location2.Y=5013.582mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3093.504mil|Location2.X=3093.504mil|Location1.Y=4663.582mil|Location2.Y=5013.582mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad SW41-1 (143.504,1713.582mil) And Pad SW40-1 (143.504,2063.582mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5893.504mil|Location2.X=5893.504mil|Location1.Y=4663.582mil|Location2.Y=5013.582mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5893.504mil|Location2.X=5893.504mil|Location1.Y=4663.582mil|Location2.Y=5013.582mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad SW42-1 (2943.504,1713.582mil) And Pad SW43-1 (2943.504,2063.582mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3732.204mil|Location1.Y=4260.001mil|Location2.Y=3964.842mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3664.566mil|Location2.X=3732.204mil|Location1.Y=4260.001mil|Location2.Y=3964.842mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R25-2 (714.566,1310.001mil) And Pad U8-10 (782.204,1014.842mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4900mil|Location2.X=5064.567mil|Location1.Y=4250mil|Location2.Y=4050mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4900mil|Location2.X=5064.567mil|Location1.Y=4250mil|Location2.Y=4050mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad X1-2 (1950,1300mil) And Pad R7-1 (2114.567,1100mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3104.567mil|Location2.X=3244.094mil|Location1.Y=3140mil|Location2.Y=3374.016mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3104.567mil|Location2.X=3244.094mil|Location1.Y=3140mil|Location2.Y=3374.016mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C10-1 (154.567,190mil) And Pad U10-2 (294.094,424.016mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6094.488mil|Location2.X=6450mil|Location1.Y=4300mil|Location2.Y=4200mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6094.488mil|Location2.X=6450mil|Location1.Y=4300mil|Location2.Y=4200mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U4-10 (3144.488,1350mil) And Pad P1-32 (3500,1250mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4904.567mil|Location2.X=4980mil|Location1.Y=3710mil|Location2.Y=3325.433mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4904.567mil|Location2.X=4980mil|Location1.Y=3710mil|Location2.Y=3325.433mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-1 (1954.567,760mil) And Pad C7-1 (2030,375.433mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620mil|Location2.X=5860.826mil|Location1.Y=3654.567mil|Location2.Y=3251.968mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620mil|Location2.X=5860.826mil|Location1.Y=3654.567mil|Location2.Y=3251.968mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C3-1 (2670,704.567mil) And Pad U3-21 (2910.826,301.968mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4144.094mil|Location2.X=4619.567mil|Location1.Y=3437.008mil|Location2.Y=3245mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4144.094mil|Location2.X=4619.567mil|Location1.Y=3437.008mil|Location2.Y=3245mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U1-26 (1194.094,487.008mil) And Pad C1-1 (1669.567,295mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3664.566mil|Location1.Y=4329.999mil|Location2.Y=4330mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3664.566mil|Location1.Y=4329.999mil|Location2.Y=4330mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad R26-2 (625.434,1379.999mil) And Pad C8-1 (714.566,1380mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3623.371mil|Location1.Y=4400mil|Location2.Y=4510mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3575.434mil|Location2.X=3623.371mil|Location1.Y=4400mil|Location2.Y=4510mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C21-1 (625.434,1450mil) And Pad C23-2 (673.371,1560mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4170.433mil|Location2.X=4339.764mil|Location1.Y=4410mil|Location2.Y=4326.772mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4170.433mil|Location2.X=4339.764mil|Location1.Y=4410mil|Location2.Y=4326.772mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C11-1 (1220.433,1460mil) And Pad U9-7 (1389.764,1376.772mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5370.433mil|Location2.X=5699.567mil|Location1.Y=4410mil|Location2.Y=4410mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5370.433mil|Location2.X=5699.567mil|Location1.Y=4410mil|Location2.Y=4410mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C5-1 (2420.433,1460mil) And Pad C6-1 (2749.567,1460mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5699.567mil|Location2.X=5893.504mil|Location1.Y=4410mil|Location2.Y=4663.582mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5699.567mil|Location2.X=5893.504mil|Location1.Y=4410mil|Location2.Y=4663.582mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C6-1 (2749.567,1460mil) And Pad SW42-1 (2943.504,1713.582mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4904.567mil|Location2.X=5064.567mil|Location1.Y=3710mil|Location2.Y=4050mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4904.567mil|Location2.X=5064.567mil|Location1.Y=3710mil|Location2.Y=4050mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C2-1 (1954.567,760mil) And Pad R7-1 (2114.567,1100mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620mil|Location2.X=5760.236mil|Location1.Y=3654.567mil|Location2.Y=4173.228mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5620mil|Location2.X=5760.236mil|Location1.Y=3654.567mil|Location2.Y=4173.228mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C3-1 (2670,704.567mil) And Pad U6-7 (2810.236,1223.228mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3244.094mil|Location2.X=4144.094mil|Location1.Y=3374.016mil|Location2.Y=3437.008mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3244.094mil|Location2.X=4144.094mil|Location1.Y=3374.016mil|Location2.Y=3437.008mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad U10-2 (294.094,424.016mil) And Pad U1-26 (1194.094,487.008mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.371mil|Location2.X=3883.661mil|Location1.Y=4610mil|Location2.Y=4751.968mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.371mil|Location2.X=3883.661mil|Location1.Y=4610mil|Location2.Y=4751.968mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C22-2 (673.371,1660mil) And Pad J1-2 (933.661,1801.968mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4499.567mil|Location2.X=4900mil|Location1.Y=4410mil|Location2.Y=4250mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4499.567mil|Location2.X=4900mil|Location1.Y=4410mil|Location2.Y=4250mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Pad C9-1 (1549.567,1460mil) And Pad X1-2 (1950,1300mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5730.906mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=5000mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5730.906mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=5000mil|Absolute=True">Un-Routed Net Constraint: Net A11 Between Pad U3-2 (2780.906,798.032mil) And Pad P1-1 (3500,2050mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5882.48mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=4900mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5882.48mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=4900mil|Absolute=True">Un-Routed Net Constraint: Net A12 Between Pad U3-9 (2932.48,798.032mil) And Pad P1-2 (3500,1950mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5795.866mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=4800mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5795.866mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=4800mil|Absolute=True">Un-Routed Net Constraint: Net A13 Between Pad U3-5 (2845.866,798.032mil) And Pad P1-3 (3500,1850mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5860.826mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=4700mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5860.826mil|Location2.X=6450mil|Location1.Y=3748.032mil|Location2.Y=4700mil|Absolute=True">Un-Routed Net Constraint: Net A14 Between Pad U3-8 (2910.826,798.032mil) And Pad P1-4 (3500,1750mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5839.174mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4300mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5839.174mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4300mil|Absolute=True">Un-Routed Net Constraint: Net D3 Between Pad U3-22 (2889.174,301.968mil) And Pad P1-8 (3500,1350mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5817.52mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4400mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5817.52mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4400mil|Absolute=True">Un-Routed Net Constraint: Net D4 Between Pad U3-23 (2867.52,301.968mil) And Pad P1-7 (3500,1450mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5795.866mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4200mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5795.866mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4200mil|Absolute=True">Un-Routed Net Constraint: Net D5 Between Pad U3-24 (2845.866,301.968mil) And Pad P1-9 (3500,1250mil)</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5774.212mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4100mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5774.212mil|Location2.X=6450mil|Location1.Y=3251.968mil|Location2.Y=4100mil|Absolute=True">Un-Routed Net Constraint: Net D6 Between Pad U3-25 (2824.212,301.968mil) And Pad P1-10 (3500,1150mil)</acronym></a><br></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>

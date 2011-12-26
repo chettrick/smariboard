@@ -1,0 +1,13 @@
+Added Component: Designator=P?(SBH11-PBPC-D20-ST-BK)
+Change Net Name : Old Net Name=NetR2_2 New Net Name=H\A\L\T\
+Change Net Name : Old Net Name=NetR4_2 New Net Name=W\A\I\T\
+Change Net Name : Old Net Name=NetR5_2 New Net Name=B\U\S\R\E\Q\
+Change Net Name : Old Net Name=NetU1_1 New Net Name=CLK
+Change Net Name : Old Net Name=NetU1_13 New Net Name=NMI
+Change Net Name : Old Net Name=NetU1_23 New Net Name=R\S\T\
+Change Net Name : Old Net Name=NetU1_24 New Net Name=M\1\
+Added Pin To Net: NetName=B\U\S\A\C\K Pin=U1-20
+Added Net: Name=B\U\S\A\C\K
+Added Pin To Net: NetName=R\F\S\H\ Pin=U1-25
+Added Net: Name=R\F\S\H\
+Added Member To Class: ClassName=Minna_CPU Member=Component P? SBH11-PBPC-D20-ST-BK

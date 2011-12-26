@@ -1,0 +1,843 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 { 
+			font-family : sans-serif;
+			color : white;
+			background-color : #21489e;
+			padding: 0.3em;
+		}
+		body { 
+			font-family : verdana;
+		}
+		td, th {  
+			padding: 0.5em;
+			text-align : center;
+			width : 18%;	
+		}
+		th { 
+			background-color : #A6CAF0;
+		
+		}
+		th.column1, td.column1 { 
+			text-align: left;
+			width : auto; 
+		}
+		table { 
+			width : 100%; 
+		}
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3 {
+			padding-top : 0.1em;
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width : auto;
+			vertical-align: top
+		}
+		.front_matter_column1 {
+			text-align : right;
+		}
+		.total_column1, .total_column {
+			font-weight : bold;	
+		}
+		.total_column1 {
+			text-align : right;
+		}
+		.front_matter_column2 {
+			text-align : center;
+		}
+		.front_matter_column3 {
+			text-align : left;
+		}
+		.warning, .error { 
+			color : red;
+			font-weight : bold;
+		}	
+		tr.onmouseout_odd { 
+			background-color : #EEEEE0 
+		}
+		tr.onmouseout_even { 
+			background-color : #F3F3E3   
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : lightYellow 
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #008000 
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+			
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);		
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {	
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}	
+	</script></head>
+<body onload="document.getElementById('radio_mil').click()"><img ALT="Altium" src="
+			file://C:\PROGRAM FILES\ALTIUM DESIGNER SUMMER 09\Templates\AD-rgb_logo_223x64.gif
+		"><a href="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports" class="customize"><acronym title="dxpprocess://Client:SetupPreferences?Server=PCB|PageName=Reports">customize</acronym></a><h1>Net Status Report</h1>
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">23/12/2011</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">8:23:40 PM</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3"><a href="file:///C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc" class="file"><acronym title="C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc">C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc</acronym></a></td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Units</td>
+<td class="front_matter_column2">:</td>
+<td class="front_matter_column3">
+<form><input type="radio" name="radio_units" id="radio_mm" onclick="changeUnits(this, 'mm')">mm<input type="radio" name="radio_units" id="radio_mil" onclick="changeUnits(this, 'mil')">mils</form>
+</td>
+</tr>
+</table>
+<hr><a name="IDATAYTO"><table>
+<tr>
+<th class="column1">Nets</th>
+<th class="column2">Layer</th>
+<th class="column3">Length</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3034mil|Location2.X=5985mil|Location1.Y=3489.173mil|Location2.Y=4850mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3034mil|Location2.X=5985mil|Location1.Y=3489.173mil|Location2.Y=4850mil|Absolute=True">8255B\R\E\A\K\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="51063290">5106.329mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">8255C\S\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="30324700">3032.47mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674mil|Location2.X=5791.732mil|Location1.Y=3331.693mil|Location2.Y=4205.708mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3674mil|Location2.X=5791.732mil|Location1.Y=3331.693mil|Location2.Y=4205.708mil|Absolute=True">8255RESET</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="27820097">2782.01mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=6600mil|Location1.Y=3075mil|Location2.Y=4130mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=6600mil|Location1.Y=3075mil|Location2.Y=4130mil|Absolute=True">A0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="53013749">5301.375mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=6600mil|Location1.Y=3055mil|Location2.Y=4030mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=6600mil|Location1.Y=3055mil|Location2.Y=4030mil|Absolute=True">A1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="52839067">5283.907mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4329mil|Location2.X=6600mil|Location1.Y=3070mil|Location2.Y=3794.292mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4329mil|Location2.X=6600mil|Location1.Y=3070mil|Location2.Y=3794.292mil|Absolute=True">A10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="43388283">4338.828mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4420.669mil|Location2.X=6600mil|Location1.Y=3525mil|Location2.Y=5030mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4420.669mil|Location2.X=6600mil|Location1.Y=3525mil|Location2.Y=5030mil|Absolute=True">A11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="36698533">3669.853mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4452.165mil|Location2.X=6600mil|Location1.Y=3645mil|Location2.Y=4930mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4452.165mil|Location2.X=6600mil|Location1.Y=3645mil|Location2.Y=4930mil|Absolute=True">A12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="41502548">4150.255mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4483.661mil|Location2.X=6600mil|Location1.Y=3585mil|Location2.Y=4830mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4483.661mil|Location2.X=6600mil|Location1.Y=3585mil|Location2.Y=4830mil|Absolute=True">A13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="37879418">3787.942mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4515.157mil|Location2.X=6600mil|Location1.Y=3625mil|Location2.Y=4730mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4515.157mil|Location2.X=6600mil|Location1.Y=3625mil|Location2.Y=4730mil|Absolute=True">A14</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="35967950">3596.795mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4546.48mil|Location2.X=6600mil|Location1.Y=3040mil|Location2.Y=4630mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4546.48mil|Location2.X=6600mil|Location1.Y=3040mil|Location2.Y=4630mil|Absolute=True">A15</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="41451798">4145.18mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975mil|Location2.X=6600mil|Location1.Y=3035mil|Location2.Y=4282.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3975mil|Location2.X=6600mil|Location1.Y=3035mil|Location2.Y=4282.48mil|Absolute=True">A2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="53389363">5338.936mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3955mil|Location2.X=6600mil|Location1.Y=3015mil|Location2.Y=4256.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3955mil|Location2.X=6600mil|Location1.Y=3015mil|Location2.Y=4256.889mil|Absolute=True">A3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="50865752">5086.575mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3880mil|Location2.X=6600mil|Location1.Y=3583.661mil|Location2.Y=4235.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3880mil|Location2.X=6600mil|Location1.Y=3583.661mil|Location2.Y=4235.409mil|Absolute=True">A4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="38904334">3890.433mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3900mil|Location2.X=6600mil|Location1.Y=3570mil|Location2.Y=4260.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3900mil|Location2.X=6600mil|Location1.Y=3570mil|Location2.Y=4260.999mil|Absolute=True">A5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="41091238">4109.124mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.268mil|Location2.X=6600mil|Location1.Y=3470mil|Location2.Y=4235.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.268mil|Location2.X=6600mil|Location1.Y=3470mil|Location2.Y=4235.409mil|Absolute=True">A6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="37414894">3741.489mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.268mil|Location2.X=6600mil|Location1.Y=3370mil|Location2.Y=4209.819mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3908.268mil|Location2.X=6600mil|Location1.Y=3370mil|Location2.Y=4209.819mil|Absolute=True">A7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="39275573">3927.557mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4294.685mil|Location2.X=6600mil|Location1.Y=3270mil|Location2.Y=3891mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4294.685mil|Location2.X=6600mil|Location1.Y=3270mil|Location2.Y=3891mil|Absolute=True">A8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="31006334">3100.633mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326.181mil|Location2.X=6600mil|Location1.Y=3170mil|Location2.Y=3866mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4326.181mil|Location2.X=6600mil|Location1.Y=3170mil|Location2.Y=3866mil|Absolute=True">A9</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="31370848">3137.085mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4294.685mil|Location2.X=6600mil|Location1.Y=3205.708mil|Location2.Y=4830mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4294.685mil|Location2.X=6600mil|Location1.Y=3205.708mil|Location2.Y=4830mil|Absolute=True">B\U\S\A\C\K</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="35935112">3593.511mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4173.779mil|Location2.X=6600mil|Location1.Y=3120.315mil|Location2.Y=4630mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4173.779mil|Location2.X=6600mil|Location1.Y=3120.315mil|Location2.Y=4630mil|Absolute=True">B\U\S\R\E\Q\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="36594594">3659.459mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.52mil|Location2.X=6600mil|Location1.Y=3646.653mil|Location2.Y=4530mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4617.52mil|Location2.X=6600mil|Location1.Y=3646.653mil|Location2.Y=4530mil|Absolute=True">CLK</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="29981485">2998.149mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3054mil|Location2.Y=3730mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3054mil|Location2.Y=3730mil|Absolute=True">D0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="40689462">4068.946mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3140mil|Location2.Y=3630mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3140mil|Location2.Y=3630mil|Absolute=True">D1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="36101936">3610.194mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3160mil|Location2.Y=3930mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3160mil|Location2.Y=3930mil|Absolute=True">D2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="38882689">3888.269mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3180mil|Location2.Y=4330mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3180mil|Location2.Y=4330mil|Absolute=True">D3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="47568015">4756.802mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3202.756mil|Location2.Y=4430mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3202.756mil|Location2.Y=4430mil|Absolute=True">D4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="46404993">4640.499mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3169mil|Location2.Y=4230mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3169mil|Location2.Y=4230mil|Absolute=True">D5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="44058190">4405.819mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3150mil|Location2.Y=4141mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3150mil|Location2.Y=4141mil|Absolute=True">D6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="43264524">4326.452mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3130mil|Location2.Y=3830mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3717.52mil|Location2.X=6600mil|Location1.Y=3130mil|Location2.Y=3830mil|Absolute=True">D7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="39369812">3936.981mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3615.157mil|Location2.X=3636.811mil|Location1.Y=3205.708mil|Location2.Y=3282.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3615.157mil|Location2.X=3636.811mil|Location1.Y=3205.708mil|Location2.Y=3282.48mil|Absolute=True">DATAIN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050mil|Location2.X=3282.48mil|Location1.Y=3050.315mil|Location2.Y=3479.331mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3050mil|Location2.X=3282.48mil|Location1.Y=3050.315mil|Location2.Y=3479.331mil|Absolute=True">DATAOUT</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6175387">617.539mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">DS_A</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="41877346">4187.735mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">DS_B</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="44465460">4446.546mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3209mil|Location2.X=5733.74mil|Location1.Y=4020.316mil|Location2.Y=4720.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3209mil|Location2.X=5733.74mil|Location1.Y=4020.316mil|Location2.Y=4720.889mil|Absolute=True">DS_C</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="40078331">4007.833mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">DS_D</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="37626223">3762.622mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3209mil|Location2.X=5792.795mil|Location1.Y=3960.316mil|Location2.Y=4751mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3209mil|Location2.X=5792.795mil|Location1.Y=3960.316mil|Location2.Y=4751mil|Absolute=True">DS_DP</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="43306120">4330.612mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">DS_E</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="30359167">3035.917mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">DS_F</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="39013398">3901.34mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">DS_G</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="36747950">3674.795mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">FLASHC\E\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3168398">316.84mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=6600mil|Location1.Y=3120.315mil|Location2.Y=5039.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=6600mil|Location1.Y=3120.315mil|Location2.Y=5039.172mil|Absolute=True">GND</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4483.661mil|Location2.X=6600mil|Location1.Y=3155mil|Location2.Y=3626mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4483.661mil|Location2.X=6600mil|Location1.Y=3155mil|Location2.Y=3626mil|Absolute=True">H\A\L\T\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="27835667">2783.567mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769mil|Location2.X=6600mil|Location1.Y=3020mil|Location2.Y=4512.008mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3769mil|Location2.X=6600mil|Location1.Y=3020mil|Location2.Y=4512.008mil|Absolute=True">I\N\T\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="51221840">5122.184mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4099mil|Location2.X=6600mil|Location1.Y=3069mil|Location2.Y=4312.181mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4099mil|Location2.X=6600mil|Location1.Y=3069mil|Location2.Y=4312.181mil|Absolute=True">I\O\R\Q\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="42523630">4252.363mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4064mil|Location2.X=6600mil|Location1.Y=3000mil|Location2.Y=4430mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4064mil|Location2.X=6600mil|Location1.Y=3000mil|Location2.Y=4430mil|Absolute=True">M\1\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="46054281">4605.428mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4452.165mil|Location2.X=6600mil|Location1.Y=3144mil|Location2.Y=3445mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4452.165mil|Location2.X=6600mil|Location1.Y=3144mil|Location2.Y=3445mil|Absolute=True">M\R\E\Q\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="23119746">2311.975mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4514mil|Location2.X=6600mil|Location1.Y=3204mil|Location2.Y=4261mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4514mil|Location2.X=6600mil|Location1.Y=3204mil|Location2.Y=4261mil|Absolute=True">NMI</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="36208792">3620.879mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=5391.732mil|Location1.Y=4020mil|Location2.Y=4526mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=5391.732mil|Location1.Y=4020mil|Location2.Y=4526mil|Absolute=True">NetC20_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="27701249">2770.125mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=5965mil|Location1.Y=4220mil|Location2.Y=4862.008mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=5965mil|Location1.Y=4220mil|Location2.Y=4862.008mil|Absolute=True">NetC21_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="38280198">3828.02mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD1_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="970860">97.086mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetD2_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="19201037">1920.104mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetDS1_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9796104">979.61mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetDS2_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9761510">976.151mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetDS3_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="10475964">1047.596mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetDS4_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="11282405">1128.241mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetDS5_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="14640853">1464.085mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetDS6_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="18145741">1814.574mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR11_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3297105">329.711mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR12_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3125284">312.528mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR13_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2689860">268.986mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR14_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2283733">228.373mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR15_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1965467">196.547mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR16_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1822936">182.294mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR17_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1766835">176.684mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR18_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="1909358">190.936mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR25_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="616130">61.613mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR26_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2436286">243.629mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR6_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3428870">342.887mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR7_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3513022">351.302mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4730.315mil|Location2.X=5391.732mil|Location1.Y=4217.52mil|Location2.Y=4390mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4730.315mil|Location2.X=5391.732mil|Location1.Y=4217.52mil|Location2.Y=4390mil|Absolute=True">NetR8_1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7792495">779.25mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetR8_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6820034">682.003mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6055.118mil|Location2.X=6165mil|Location1.Y=4088.189mil|Location2.Y=4261.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6055.118mil|Location2.X=6165mil|Location1.Y=4088.189mil|Location2.Y=4261.811mil|Absolute=True">NetU4_11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2693082">269.308mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5328.74mil|Location2.X=6133.858mil|Location1.Y=4188.189mil|Location2.Y=4355mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5328.74mil|Location2.X=6133.858mil|Location1.Y=4188.189mil|Location2.Y=4355mil|Absolute=True">NetU4_12</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="8682106">868.211mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5328.74mil|Location2.X=5944.882mil|Location1.Y=4294.29mil|Location2.Y=4411.811mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5328.74mil|Location2.X=5944.882mil|Location1.Y=4294.29mil|Location2.Y=4411.811mil|Absolute=True">NetU4_6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6795758">679.576mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874mil|Location2.X=5236mil|Location1.Y=4217.52mil|Location2.Y=4500mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3874mil|Location2.X=5236mil|Location1.Y=4217.52mil|Location2.Y=4500mil|Absolute=True">NetU5_10</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="18159378">1815.938mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4128.74mil|Location2.X=5205mil|Location1.Y=4243.11mil|Location2.Y=4480mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4128.74mil|Location2.X=5205mil|Location1.Y=4243.11mil|Location2.Y=4480mil|Absolute=True">NetU5_11</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="13941797">1394.18mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU5_13</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="14723678">1472.368mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5108.268mil|Location2.X=5791.732mil|Location1.Y=4145mil|Location2.Y=4282.48mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5108.268mil|Location2.X=5791.732mil|Location1.Y=4145mil|Location2.Y=4282.48mil|Absolute=True">NetU5_8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="7172617">717.262mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5508.268mil|Location2.X=5606mil|Location1.Y=4166.338mil|Location2.Y=4286.59mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5508.268mil|Location2.X=5606mil|Location1.Y=4166.338mil|Location2.Y=4286.59mil|Absolute=True">NetU6_8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="2088713">208.871mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="6442514">644.251mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5971741">597.174mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="5471680">547.168mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4665421">466.542mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_6</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4194640">419.464mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_7</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3753157">375.316mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_8</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="3340963">334.096mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">NetU8_9</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="4855400">485.54mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.78mil|Location2.X=6237.008mil|Location1.Y=3120.315mil|Location2.Y=4339.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.78mil|Location2.X=6237.008mil|Location1.Y=3120.315mil|Location2.Y=4339.172mil|Absolute=True">PA0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="35748019">3574.802mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.78mil|Location2.X=6237.008mil|Location1.Y=3050.315mil|Location2.Y=4339.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3333.78mil|Location2.X=6237.008mil|Location1.Y=3050.315mil|Location2.Y=4339.172mil|Absolute=True">PA1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="30405647">3040.565mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415mil|Location2.X=6237.008mil|Location1.Y=3050.315mil|Location2.Y=3989.173mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3415mil|Location2.X=6237.008mil|Location1.Y=3050.315mil|Location2.Y=3989.173mil|Absolute=True">PA2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="21558562">2155.856mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3245mil|Location2.X=6237.008mil|Location1.Y=3120.315mil|Location2.Y=4440mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3245mil|Location2.X=6237.008mil|Location1.Y=3120.315mil|Location2.Y=4440mil|Absolute=True">PA3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="37885401">3788.54mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3462.992mil|Location2.X=3945mil|Location1.Y=3050.315mil|Location2.Y=4339.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3462.992mil|Location2.X=3945mil|Location1.Y=3050.315mil|Location2.Y=4339.172mil|Absolute=True">PA4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="18089034">1808.903mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3020mil|Location2.X=3666.22mil|Location1.Y=3120.315mil|Location2.Y=4339.172mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3020mil|Location2.X=3666.22mil|Location1.Y=3120.315mil|Location2.Y=4339.172mil|Absolute=True">PA5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="16238763">1623.876mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=6237.008mil|Location1.Y=3060.827mil|Location2.Y=4371mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=6237.008mil|Location1.Y=3060.827mil|Location2.Y=4371mil|Absolute=True">PC0</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="47448346">4744.835mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=5945mil|Location1.Y=3060.827mil|Location2.Y=4281mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3205.708mil|Location2.X=5945mil|Location1.Y=3060.827mil|Location2.Y=4281mil|Absolute=True">PC1</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="43824848">4382.485mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3040mil|Location2.X=5437.008mil|Location1.Y=3060.827mil|Location2.Y=4550mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3040mil|Location2.X=5437.008mil|Location1.Y=3060.827mil|Location2.Y=4550mil|Absolute=True">PC2</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="64670971">6467.097mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=5037.008mil|Location1.Y=3000mil|Location2.Y=4286mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=5037.008mil|Location1.Y=3000mil|Location2.Y=4286mil|Absolute=True">PC3</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="41541096">4154.11mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=4880mil|Location1.Y=3060.827mil|Location2.Y=4235.41mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=4880mil|Location1.Y=3060.827mil|Location2.Y=4235.41mil|Absolute=True">PC4</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="26236987">2623.699mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=4637.008mil|Location1.Y=3060.827mil|Location2.Y=4201mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3062.992mil|Location2.X=4637.008mil|Location1.Y=3060.827mil|Location2.Y=4201mil|Absolute=True">PC5</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="23441075">2344.108mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.481mil|Location2.X=5736.811mil|Location1.Y=3150mil|Location2.Y=3315mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4882.481mil|Location2.X=5736.811mil|Location1.Y=3150mil|Location2.Y=3315mil|Absolute=True">RAMC\E\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="10508888">1050.889mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3240mil|Location2.X=6600mil|Location1.Y=3020mil|Location2.Y=5030mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3240mil|Location2.X=6600mil|Location1.Y=3020mil|Location2.Y=5030mil|Absolute=True">R\D\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="58523575">5852.358mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4045mil|Location2.X=6600mil|Location1.Y=2980mil|Location2.Y=4330mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4045mil|Location2.X=6600mil|Location1.Y=2980mil|Location2.Y=4330mil|Absolute=True">R\F\S\H\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="40342807">4034.281mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4105.708mil|Location2.X=6600mil|Location1.Y=3331.693mil|Location2.Y=4530mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4105.708mil|Location2.X=6600mil|Location1.Y=3331.693mil|Location2.Y=4530mil|Absolute=True">R\S\T\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="33939064">3393.906mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3134mil|Location2.X=6237.008mil|Location1.Y=3050.315mil|Location2.Y=4870mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3134mil|Location2.X=6237.008mil|Location1.Y=3050.315mil|Location2.Y=4870mil|Absolute=True">USER</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="50817636">5081.764mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">VCC</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="0">0mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=0mil|Location2.X=0mil|Location1.Y=0mil|Location2.Y=0mil|Absolute=True">VIN</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="9065043">906.504mils
+			</a></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4252.913mil|Location2.X=6600mil|Location1.Y=3120.315mil|Location2.Y=4730mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4252.913mil|Location2.X=6600mil|Location1.Y=3120.315mil|Location2.Y=4730mil|Absolute=True">W\A\I\T\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="36428212">3642.821mils
+			</a></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3646.653mil|Location2.X=6600mil|Location1.Y=3169mil|Location2.Y=4930mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\DEV\Altium\Minna V0.1\Minna_V01.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3646.653mil|Location2.X=6600mil|Location1.Y=3169mil|Location2.Y=4930mil|Absolute=True">W\R\</acronym></a></td>
+<td class="column2">Signal Layers Only</td>
+<td class="column3"><a name="coordinate" value="48033593">4803.359mils
+			</a></td>
+</tr>
+</table></a><a href="#top">Back to top</a><br><br></body>
+</html>
