@@ -1,9 +1,0 @@
-Added Component: Designator=D2(APG1608)
-Added Component: Designator=R27(0603)
-Added Pin To Net: NetName=VCC Pin=D2-1
-Added Pin To Net: NetName=TONEOUT Pin=R27-1
-Added Pin To Net: NetName=NetD2_2 Pin=D2-2
-Added Pin To Net: NetName=NetD2_2 Pin=R27-2
-Added Net: Name=NetD2_2
-Added Member To Class: ClassName=Minna_IO Member=Component D2 TONE
-Added Member To Class: ClassName=Minna_IO Member=Component R27 10K
