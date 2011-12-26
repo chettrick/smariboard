@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=GND Pin=J1-2
+Removed Member From Class: ClassName=Minna_CPU Member=J1
+Added Pin To Net: NetName=NetU1_6 Pin=U7-2
+Change Net Name : Old Net Name=NetU1_6 New Net Name=2
+Added Room: Name=Minna_CPU
+Added Room: Name=Minna_IO

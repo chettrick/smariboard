@@ -1,0 +1,4 @@
+Change Component Comment : Designator=SW17 Old Comment=TAPERD New Comment=DATAIN
+Change Component Comment : Designator=SW23 Old Comment=TAPEWR New Comment=DATAOUT
+Change Net Name : Old Net Name=TONEIN New Net Name=DATAIN
+Change Net Name : Old Net Name=TONEOUT New Net Name=DATAOUT
