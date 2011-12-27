@@ -1,4 +1,0 @@
-Added Component: Designator=J1(PJ-051A)
-Added Pin To Net: NetName=VIN Pin=J1-1
-Added Pin To Net: NetName=GND Pin=J1-2
-Added Member To Class: ClassName=Minna_CPU Member=Component J1 PJ-051A
