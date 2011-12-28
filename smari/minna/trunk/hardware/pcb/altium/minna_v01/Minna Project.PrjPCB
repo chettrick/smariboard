@@ -131,45 +131,41 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
-[GeneratedDocument1]
-DocumentPath=Project Outputs for O2_Sensor_CAN\Bill of Materials-Minna Project.xls
-DItemRevisionGUID=
-
 [Parameter1]
-Name=ProjectTitle
-Value=smari minna
+Name=Address1
+Value=103-3061 East Kent Ave North
 
 [Parameter2]
-Name=ProjectRevision
-Value=0.1.0
+Name=Address2
+Value=Vancouver, BC Canada
 
 [Parameter3]
-Name=ProjectAuthor
-Value=Chris Hettrick
+Name=Address3
+Value=V5S 4P5
 
 [Parameter4]
-Name=CompanyName
-Value=Populate All The Resistors
+Name=Address4
+Value=604-433-3224
 
 [Parameter5]
 Name=Address5
 Value=info@populatealltheresistors.com
 
 [Parameter6]
-Name=Address4
-Value=604-433-3224
+Name=CompanyName
+Value=Populate All The Resistors
 
 [Parameter7]
-Name=Address3
-Value=V5S 4P5
+Name=ProjectAuthor
+Value=Chris Hettrick
 
 [Parameter8]
-Name=Address2
-Value=Vancouver, BC Canada
+Name=ProjectRevision
+Value=0.1.0
 
 [Parameter9]
-Name=Address1
-Value=103-3061 East Kent Ave North
+Name=ProjectTitle
+Value=smari minna
 
 [Generic_SmartPDF]
 AutoOpenFile=-1
