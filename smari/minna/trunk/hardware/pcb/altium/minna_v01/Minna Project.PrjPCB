@@ -102,21 +102,6 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
 [Document6]
-DocumentPath=Minna Project.OutJob
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-
-[Document7]
 DocumentPath=BOMandSch.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -131,7 +116,7 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
-[Document8]
+[Document7]
 DocumentPath=Gerber and Assembly.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -146,6 +131,46 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for O2_Sensor_CAN\Bill of Materials-Minna Project.xls
+DItemRevisionGUID=
+
+[Parameter1]
+Name=ProjectTitle
+Value=smari minna
+
+[Parameter2]
+Name=ProjectRevision
+Value=0.1.0
+
+[Parameter3]
+Name=ProjectAuthor
+Value=Chris Hettrick
+
+[Parameter4]
+Name=CompanyName
+Value=Populate All The Resistors
+
+[Parameter5]
+Name=Address5
+Value=info@populatealltheresistors.com
+
+[Parameter6]
+Name=Address4
+Value=604-433-3224
+
+[Parameter7]
+Name=Address3
+Value=V5S 4P5
+
+[Parameter8]
+Name=Address2
+Value=Vancouver, BC Canada
+
+[Parameter9]
+Name=Address1
+Value=103-3061 East Kent Ave North
+
 [Generic_SmartPDF]
 AutoOpenFile=-1
 AutoOpenOutJob=-1
@@ -158,7 +183,7 @@ AddNetPins=-1
 AddNetNetLabels=-1
 AddNetPorts=-1
 ExportBOM=-1
-TemplateFilename=BOM Default Template 95.xlt
+TemplateFilename=..\templates\BOM Template.xlt
 TemplateStoreRelative=-1
 PCB_PrintColor=0
 SCH_PrintColor=0
@@ -166,14 +191,14 @@ SCH_ShowNoErc=-1
 SCH_ShowParameter=-1
 SCH_ShowProbes=-1
 SCH_ShowBlankets=-1
-OutputFileName=Minna Project.PrjPCB=C:\DEV\Altium\Minna V0.1\Minna Project.pdf
+OutputFileName=Minna Project.PrjPCB=C:\DEV\smari\minna\trunk\hardware\pcb\altium\minna_v01\Minna Project.pdf
 SCH_ExpandLogicalToPhysical=-1
 SCH_VariantName=[No Variations]
 SCH_ExpandComponentDesignators=-1
-SCH_ExpandNetlabels=0
-SCH_ExpandPorts=0
-SCH_ExpandSheetNumber=0
-SCH_ExpandDocumentNumber=0
+SCH_ExpandNetlabels=-1
+SCH_ExpandPorts=-1
+SCH_ExpandSheetNumber=-1
+SCH_ExpandDocumentNumber=-1
 SCH_HasExpandLogicalToPhysicalSheets=-1
 SaveSettingsToOutJob=-1
 
