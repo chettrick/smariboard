@@ -131,6 +131,29 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
+[Document8]
+DocumentPath=Console_V01.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Minna Project\Design Rule Check - Minna_V01.html
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for Minna Project 13-03-2012 12-04-37 AM\Minna Project.REP
+DItemRevisionGUID=
+
 [Parameter1]
 Name=Address1
 Value=103-3061 East Kent Ave North
@@ -201,7 +224,7 @@ SaveSettingsToOutJob=-1
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
-TargetPrinter=Canon MP210 series Printer
+TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=CadnetixNetlist
 OutputName1=Cadnetix Netlist
@@ -332,7 +355,7 @@ OutputDefault25=0
 [OutputGroup2]
 Name=Simulator Outputs
 Description=
-TargetPrinter=Canon MP210 series Printer
+TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=AdvSimNetlist
 OutputName1=Mixed Sim
@@ -353,7 +376,7 @@ OutputDefault3=0
 [OutputGroup3]
 Name=Documentation Outputs
 Description=
-TargetPrinter=Canon MP210 series Printer
+TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Composite
 OutputName1=Composite Drawing
@@ -427,7 +450,7 @@ PageOptions9=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintS
 [OutputGroup4]
 Name=Assembly Outputs
 Description=
-TargetPrinter=Canon MP210 series Printer
+TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Assembly
 OutputName1=Assembly Drawings
@@ -449,7 +472,7 @@ OutputDefault3=0
 [OutputGroup5]
 Name=Fabrication Outputs
 Description=
-TargetPrinter=Canon MP210 series Printer
+TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=CompositeDrill
 OutputName1=Composite Drill Drawing
@@ -823,60 +846,62 @@ OutputDefault9=0
 [OutputGroup6]
 Name=Report Outputs
 Description=
-TargetPrinter=Canon MP210 series Printer
+TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
-OutputType1=BOM_PartType
-OutputName1=Bill of Materials
+OutputType1=Script
+OutputName1=Script Output
 OutputDocumentPath1=
 OutputVariantName1=
-OutputDefault1=1
-PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
-OutputType2=ComponentCrossReference
-OutputName2=Component Cross Reference Report
+OutputDefault1=0
+OutputType2=ReportHierarchy
+OutputName2=Report Project Hierarchy
 OutputDocumentPath2=
 OutputVariantName2=
 OutputDefault2=0
-OutputType3=Design Rules Check
-OutputName3=Design Rules Check
+Configuration2_Name1=OutputConfigurationParameter1
+Configuration2_Item1=Record=ReportHierarchyView|ReportHierarchyMode=0
+OutputType3=SinglePinNetReporter
+OutputName3=Report Single Pin Nets
 OutputDocumentPath3=
 OutputVariantName3=
 OutputDefault3=0
-PageOptions3=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
-OutputType4=Electrical Rules Check
-OutputName4=Electrical Rules Check
+Configuration3_Name1=OutputConfigurationParameter1
+Configuration3_Item1=NetlistVersion=0|Record=SinglePinNetsView
+OutputType4=SimpleBOM
+OutputName4=Simple BOM
 OutputDocumentPath4=
 OutputVariantName4=
 OutputDefault4=0
-PageOptions4=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
-OutputType5=ReportHierarchy
-OutputName5=Report Project Hierarchy
+OutputType5=ComponentCrossReference
+OutputName5=Component Cross Reference Report
 OutputDocumentPath5=
 OutputVariantName5=
 OutputDefault5=0
-Configuration5_Name1=OutputConfigurationParameter1
-Configuration5_Item1=Record=ReportHierarchyView|ReportHierarchyMode=0
-OutputType6=Script
-OutputName6=Script Output
+OutputType6=BOM_PartType
+OutputName6=Bill of Materials
 OutputDocumentPath6=
 OutputVariantName6=
-OutputDefault6=0
-OutputType7=SimpleBOM
-OutputName7=Simple BOM
+OutputDefault6=1
+PageOptions6=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
+Configuration6_Name1=OutputConfigurationParameter1
+Configuration6_Item1=Record=BOMPrintView|ShowNoERC=True|ShowParamSet=True|ShowProbe=True|ShowBlanket=True|ExpandDesignator=True|ExpandNetLabel=False|ExpandPort=False|ExpandSheetNum=False|ExpandDocNum=False
+OutputType7=Electrical Rules Check
+OutputName7=Electrical Rules Check
 OutputDocumentPath7=
 OutputVariantName7=
 OutputDefault7=0
-OutputType8=SinglePinNetReporter
-OutputName8=Report Single Pin Nets
+PageOptions7=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
+OutputType8=Design Rules Check
+OutputName8=Design Rules Check
 OutputDocumentPath8=
 OutputVariantName8=
 OutputDefault8=0
-Configuration8_Name1=OutputConfigurationParameter1
-Configuration8_Item1=NetlistVersion=0|Record=SinglePinNetsView
+PageOptions8=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
 
 [OutputGroup7]
 Name=Other Outputs
 Description=
-TargetPrinter=Canon MP210 series Printer
+TargetPrinter=Microsoft XPS Document Writer
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputType1=Text Print
 OutputName1=Text Print
@@ -1170,7 +1195,7 @@ Type11=2
 Type12=2
 Type13=2
 Type14=1
-Type15=1
+Type15=0
 Type16=1
 Type17=1
 Type18=1
@@ -1565,7 +1590,7 @@ ProjectToDo13=Name=Ferrite bead on VCC from regulator?~1Add another large cap (4
 ProjectToDo14=Name=Add test points for 'scope probe connections. Both solder pads and 'loops'.~1See Freescale HCS12 board for the exact part number.~1These will be points that are not accesible via the edge connector.|Owner=Chris|Category=Schematic / PCB|UID=PTTGJGSL
 ProjectToDo15=Name=External connector (0.1" spacing?) for PC7 and PA7, TONEOUT and TONEIN respectively.~1These will eventually be /TXNE and /RXNE for USB communication, but for now they are GPIO|Owner=Chris|Category=Schematic / PCB|UID=ELKAXETK
 ProjectToDo16=Name=Serial EEPROM/Flash for program storage used by TAPEWR and TAPERD buttons and TONEOUT and TONEIN?~1Maybe not.|Owner=Chris|Category=Next Revision|UID=GEKXQFSF
-ProjectToDo17=Name=All '.Designator' shall be in the horizontal position on all PCB components|Owner=Chris|Category=PCB|UID=SEYFYAEV
+ProjectToDo17=Name=All '.Designator' shall be in the horizontal position on all PCB components|State=1|Owner=Chris|Category=PCB|UID=SEYFYAEV
 ProjectToDo18=Name=Add fiducials to PCB. One in each corner of PCB and two around each QFP. I think that will be enough.~1Check Dorigo / Proto Express websites to see what they would like for assembly.|Owner=Chris|Category=PCB|UID=CSBBSMXD
 ProjectToDo19=Name=Add mounting holes, even if it is just two holes. Find where you could move the tracks around to fit this.|Owner=Chris|Category=PCB|UID=NQMWGYKG
 ProjectToDo20=Name=Power ON LED?|Owner=Chris|Category=Design|UID=AAYWAALG
@@ -1575,7 +1600,7 @@ ProjectToDo23=Name=Add text in copper layers such as PCB revision, SVN revision 
 ProjectToDo24=Name=Add solder jumper to edge connector on VCC, so that extra testing can be done.~1In a newer revision we could have this connector switched by the power connector.|Owner=Chris|Category=Schematic / PCB|UID=CFPMDGQW
 ProjectToDo25=Name=Add layer stackup as Top to Bottom: Top Layer, Power, Ground, Bottom Layer. Ensure total PCB thickness is 0.62mm|State=1|Owner=Chris|Category=PCB|UID=EBCJUSDW
 ProjectToDo26=Name=Route power connections once PCB is made 4 layer.~1In a new revision I will aim for a 2 layer PCB.|State=1|Owner=Chris|Category=PCB|UID=KPTDTDSY
-ProjectToDo27=Name=Add actual document to PCB design.~1Include layer stackup legend, PCB routing instructions and dimensions.~1Use SRI format for reference.|Owner=Chris|Category=PCB|UID=GFCXQJPS
+ProjectToDo27=Name=Add actual document to PCB design.~1Include layer stackup legend, PCB routing instructions and dimensions.~1Use SRI format for reference.|State=1|Owner=Chris|Category=PCB|UID=GFCXQJPS
 ProjectToDo28=Name=Use SRI reference for build output files.|Owner=Chris|Category=Project Output|UID=JMIJFUGH
 ProjectToDo29=Name=PCB silkscreen fonts: Find a good font to work with|Priority=1|Owner=Chris|Category=PCB|UID=VCENURKA
 ProjectToDo30=Name=Add VIN ranges in silkscreen|Owner=Chris|Category=PCB|UID=HSUCVHGL
