@@ -112,7 +112,7 @@ AnnotateOrder=-1
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
+ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
@@ -127,45 +127,45 @@ AnnotateOrder=-1
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
+ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
 [Parameter1]
-Name=Address1
-Value=103-3061 East Kent Ave North
+Name=ProjectTitle
+Value=smari minna
 
 [Parameter2]
-Name=Address2
-Value=Vancouver, BC Canada
+Name=ProjectRevision
+Value=0.1.0
 
 [Parameter3]
-Name=Address3
-Value=V5S 4P5
+Name=ProjectAuthor
+Value=Chris Hettrick
 
 [Parameter4]
-Name=Address4
-Value=604-433-3224
+Name=CompanyName
+Value=Populate All The Resistors
 
 [Parameter5]
 Name=Address5
 Value=info@populatealltheresistors.com
 
 [Parameter6]
-Name=CompanyName
-Value=Populate All The Resistors
+Name=Address4
+Value=604-433-3224
 
 [Parameter7]
-Name=ProjectAuthor
-Value=Chris Hettrick
+Name=Address3
+Value=V5S 4P5
 
 [Parameter8]
-Name=ProjectRevision
-Value=0.1.0
+Name=Address2
+Value=Vancouver, BC Canada
 
 [Parameter9]
-Name=ProjectTitle
-Value=smari minna
+Name=Address1
+Value=103-3061 East Kent Ave North
 
 [Generic_SmartPDF]
 AutoOpenFile=-1
@@ -465,10 +465,10 @@ OutputDefault2=0
 PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
 OutputType3=Final
 OutputName3=Final Artwork Prints
-OutputDocumentPath3=C:\DEV\smari\minna\trunk\hardware\pcb\altium\minna_v01\Minna_V01.PcbDoc
+OutputDocumentPath3=C:\DEV\smari\minna\trunk\hardware\pcb\altium\minna\minna_pcb.PcbDoc
 OutputVariantName3=
 OutputDefault3=1
-PageOptions3=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.05|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
+PageOptions3=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.12|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
 Configuration3_Name1=OutputConfigurationParameter1
 Configuration3_Item1=PrintArea=DesignExtent|PrintAreaLowerLeftCornerX=0|PrintAreaLowerLeftCornerY=0|PrintAreaUpperRightCornerX=0|PrintAreaUpperRightCornerY=0|Record=PcbPrintView
 Configuration3_Name2=OutputConfigurationParameter2
