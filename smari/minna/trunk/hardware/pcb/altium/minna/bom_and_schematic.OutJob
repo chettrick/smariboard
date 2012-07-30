@@ -2,11 +2,11 @@
 Version=1.0
 
 [OutputGroup1]
-Name=BOMandSch.OutJob
+Name=bom_and_schematic.OutJob
 Description=
-TargetOutputMedium=Publish To PDF
+TargetOutputMedium=Generate Files
 IncludedInRelease=0
-TargetPrinter=Send To OneNote 2007
+TargetPrinter=Canon Inkjet MP210 series
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
 OutputMedium1=Print To HP Officejet Pro L7700 series
 OutputMedium1_Type=Printer
@@ -107,7 +107,7 @@ OutputType4=Schematic Print
 OutputName4=Schematic Prints
 OutputDocumentPath4=
 OutputVariantName4=
-OutputEnabled4=1
+OutputEnabled4=0
 OutputEnabled4_OutputMedium1=0
 OutputEnabled4_OutputMedium2=1
 OutputEnabled4_OutputMedium3=0
@@ -590,23 +590,23 @@ OutputType17=BOM_PartType
 OutputName17=Bill of Materials
 OutputDocumentPath17=
 OutputVariantName17=
-OutputEnabled17=0
+OutputEnabled17=1
 OutputEnabled17_OutputMedium1=0
-OutputEnabled17_OutputMedium2=0
+OutputEnabled17_OutputMedium2=2
 OutputEnabled17_OutputMedium3=0
 OutputEnabled17_OutputMedium4=1
 OutputDefault17=0
-PageOptions17=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter|PrintScaleMode=1
+PageOptions17=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=0|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-4|MediaType=1|DitherType=10|PaperKind=Letter 8.5"x11"|PrintScaleMode=1
 Configuration17_Name1=Filter
 Configuration17_Item1=545046300E5446696C74657257726170706572000D46696C7465722E416374697665090F46696C7465722E43726974657269610A04000000000000000000
 Configuration17_Name2=General
-Configuration17_Item2=OpenExported=True|AddToProject=True|ForceFit=False|NotFitted=False|Database=False|IncludePCBData=False|ShowExportOptions=True|TemplateFilename=C:\DEV\smari\minna\trunk\hardware\pcb\altium\templates\BOM Template.xlt|BatchMode=5|FormWidth=1280|FormHeight=642|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
+Configuration17_Item2=OpenExported=True|AddToProject=True|ForceFit=False|NotFitted=False|Database=False|IncludePCBData=False|ShowExportOptions=True|TemplateFilename=C:\DEV\smari\minna\trunk\hardware\pcb\altium\templates\BOM Template.xlt|BatchMode=5|FormWidth=1280|FormHeight=644|SupplierProdQty=1|SupplierAutoQty=False|SupplierUseCachedPricing=False|SupplierCurrency=<none>
 Configuration17_Name3=GroupOrder
 Configuration17_Item3=DistPN=True|Load=True
 Configuration17_Name4=OutputConfigurationParameter1
 Configuration17_Item4=Record=BOMPrintView|ShowNoERC=True|ShowParamSet=True|ShowProbe=True|ShowBlanket=True|ExpandDesignator=True|ExpandNetLabel=False|ExpandPort=False|ExpandSheetNum=False|ExpandDocNum=False
 Configuration17_Name5=PCBDocument
-Configuration17_Item5=FileName=Minna_V01.PcbDoc
+Configuration17_Item5=
 Configuration17_Name6=SortOrder
 Configuration17_Item6=Load=Down|Designator=Up
 Configuration17_Name7=VisibleOrder

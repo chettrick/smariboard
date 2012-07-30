@@ -131,6 +131,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for Minna Project\Design Rule Check - minna_pcb.html
+DItemRevisionGUID=
+
 [Parameter1]
 Name=Address1
 Value=103-3061 East Kent Ave North
