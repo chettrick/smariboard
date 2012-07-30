@@ -2,7 +2,7 @@
 Version=1.0
 HierarchyMode=0
 ChannelRoomNamingStyle=0
-OutputPath=
+OutputPath=Project Outputs for console_pcb_project
 LogFolderPath=
 ChannelDesignatorFormatString=$Component_$RoomName
 ChannelRoomLevelSeperator=_
@@ -27,7 +27,7 @@ PushECOToAnnotationFile=1
 DItemRevisionGUID=
 
 [Document1]
-DocumentPath=..\..\..\..\..\..\common\altium\library\smari_lib_schematic.SchLib
+DocumentPath=..\..\..\..\..\..\minna\trunk\hardware\pcb\altium\minna\bom_and_schematic.OutJob
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -42,7 +42,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
 [Document2]
-DocumentPath=..\..\..\..\..\..\common\altium\library\smari_lib_pcb.PcbLib
+DocumentPath=..\..\..\..\..\..\common\altium\library\smari_lib_schematic.SchLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -57,7 +57,7 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
 [Document3]
-DocumentPath=console_pcb.PcbDoc
+DocumentPath=..\..\..\..\..\..\common\altium\library\smari_lib_pcb.PcbLib
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -72,6 +72,21 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
 [Document4]
+DocumentPath=console_pcb.PcbDoc
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+
+[Document5]
 DocumentPath=console_schematic_logic.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -86,7 +101,7 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
-[Document5]
+[Document6]
 DocumentPath=console_schematic_switches.SchDoc
 AnnotationEnabled=1
 AnnotateStartValue=1
@@ -99,6 +114,14 @@ DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
 ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
+DItemRevisionGUID=
+
+[GeneratedDocument1]
+DocumentPath=Project Outputs for console_pcb_project\console_pcb_project.xls
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=Project Outputs for console_pcb_project\Net Status - console_pcb.html
 DItemRevisionGUID=
 
 [OutputGroup1]
