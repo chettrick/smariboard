@@ -78,7 +78,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=0
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -93,7 +93,7 @@ AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
 AnnotateSuffix=
 AnnotateScope=All
-AnnotateOrder=-1
+AnnotateOrder=1
 DoLibraryUpdate=1
 DoDatabaseUpdate=1
 ClassGenCCAutoEnabled=1
@@ -133,6 +133,10 @@ DItemRevisionGUID=
 
 [GeneratedDocument1]
 DocumentPath=Project Outputs for Minna Project\Design Rule Check - minna_pcb.html
+DItemRevisionGUID=
+
+[GeneratedDocument2]
+DocumentPath=..\..\..\..\..\..\..\..\Program Files (x86)\Altium Designer Summer 09\Library\Ftdi\FTDI FT-X Series\FTDI Communication USB.PcbLib.htm
 DItemRevisionGUID=
 
 [Parameter1]
