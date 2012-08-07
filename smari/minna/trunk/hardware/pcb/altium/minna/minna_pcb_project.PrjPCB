@@ -2,7 +2,7 @@
 Version=1.0
 HierarchyMode=3
 ChannelRoomNamingStyle=0
-OutputPath=Project Outputs for Minna Project
+OutputPath=Project Outputs for minna_pcb_project
 LogFolderPath=
 ChannelDesignatorFormatString=$Component_$RoomName
 ChannelRoomLevelSeperator=_
@@ -131,49 +131,312 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
+[Document8]
+DocumentPath=minna_pcb_project_cam_verify.cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+
 [GeneratedDocument1]
-DocumentPath=Project Outputs for O2_Sensor_CAN\Bill of Materials-minna_pcb_project.xls
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\attrlist
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=Project Outputs for Minna Project\Design Rule Check - minna_pcb.html
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottom\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomoverlay\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottompaste\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomsolder\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\drill\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical1\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical2\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical12\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical13\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical14\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane1\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane2\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\top\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topoverlay\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\toppaste\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topsolder\attrlist
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_bot\components
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_top\components
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\eda\data
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for minna_pcb_project\Design Rule Check - minna_pcb.html
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottom\features
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomoverlay\features
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottompaste\features
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomsolder\features
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_bot\features
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_top\features
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\drill\features
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical1\features
+DItemRevisionGUID=
+
+[GeneratedDocument30]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical2\features
+DItemRevisionGUID=
+
+[GeneratedDocument31]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical12\features
+DItemRevisionGUID=
+
+[GeneratedDocument32]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical13\features
+DItemRevisionGUID=
+
+[GeneratedDocument33]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical14\features
+DItemRevisionGUID=
+
+[GeneratedDocument34]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane1\features
+DItemRevisionGUID=
+
+[GeneratedDocument35]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane2\features
+DItemRevisionGUID=
+
+[GeneratedDocument36]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\top\features
+DItemRevisionGUID=
+
+[GeneratedDocument37]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topoverlay\features
+DItemRevisionGUID=
+
+[GeneratedDocument38]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\toppaste\features
+DItemRevisionGUID=
+
+[GeneratedDocument39]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topsolder\features
+DItemRevisionGUID=
+
+[GeneratedDocument40]
+DocumentPath=Project Outputs for minna_pcb_project\odb\matrix\matrix
+DItemRevisionGUID=
+
+[GeneratedDocument41]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.DRL
+DItemRevisionGUID=
+
+[GeneratedDocument42]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument43]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument44]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument45]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument46]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument47]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument48]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GD1
+DItemRevisionGUID=
+
+[GeneratedDocument49]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GG1
+DItemRevisionGUID=
+
+[GeneratedDocument50]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument51]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GM2
+DItemRevisionGUID=
+
+[GeneratedDocument52]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GP1
+DItemRevisionGUID=
+
+[GeneratedDocument53]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GP2
+DItemRevisionGUID=
+
+[GeneratedDocument54]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GPB
+DItemRevisionGUID=
+
+[GeneratedDocument55]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GPT
+DItemRevisionGUID=
+
+[GeneratedDocument56]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument57]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument58]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument59]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument60]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument61]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.REP
+DItemRevisionGUID=
+
+[GeneratedDocument62]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument63]
+DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument64]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\netlists\cadnet\netlist
+DItemRevisionGUID=
+
+[GeneratedDocument65]
+DocumentPath=Project Outputs for minna_pcb_project\Pick Place for minna_pcb.txt
+DItemRevisionGUID=
+
+[GeneratedDocument66]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\profile
+DItemRevisionGUID=
+
+[GeneratedDocument67]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\stephdr
+DItemRevisionGUID=
+
+[GeneratedDocument68]
+DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\drill\tools
 DItemRevisionGUID=
 
 [Parameter1]
-Name=Address1
-Value=103-3061 East Kent Ave North
+Name=ProjectTitle
+Value=smari minna
 
 [Parameter2]
-Name=Address2
-Value=Vancouver, BC Canada
+Name=ProjectRevision
+Value=v0.1
 
 [Parameter3]
-Name=Address3
-Value=V5S 4P5
-
-[Parameter4]
-Name=Address4
-Value=604-433-3224
-
-[Parameter5]
-Name=Address5
-Value=info@populatealltheresistors.com
-
-[Parameter6]
-Name=CompanyName
-Value=Populate All The Resistors
-
-[Parameter7]
 Name=ProjectAuthor
 Value=Chris Hettrick
 
-[Parameter8]
-Name=ProjectRevision
-Value=0.1.0
+[Parameter4]
+Name=CompanyName
+Value=Populate All The Resistors
 
-[Parameter9]
-Name=ProjectTitle
-Value=smari minna
+[Parameter5]
+Name=CompanyEmail
+Value=info@populatealltheresistors.com
 
 [Generic_SmartPDF]
 AutoOpenFile=-1
@@ -1569,14 +1832,14 @@ ProjectToDo7=Name=Z80 going to DC, or into low power mode..do we need a cct to d
 ProjectToDo8=Name=Pullups on chip select pins for in reset and powerup?~1Pullups on /MREQ, /IORQ, /RD, /WR, /FLASHCE AND /RAMCE?|Owner=Chris|Category=Design|UID=EFSDDUJS
 ProjectToDo9=Name=Add solder jumpers for each IC VCC to test for current usage.|Owner=Chris|Category=Schematic / PCB|UID=KHMHCHUB
 ProjectToDo10=Name=Ground post for oscilloscope probe connection.|Owner=Chris|Category=Schematic / PCB|UID=YHXXRMKV
-ProjectToDo11=Name=Debounce the /INT pin! See cct on printout.|Priority=3|Owner=Chris|Category=Schematic / PCB|UID=IWATXNGN
+ProjectToDo11=Name=Debounce the /INT pin! See cct on printout.|Priority=3|State=1|Owner=Chris|Category=Schematic / PCB|UID=IWATXNGN
 ProjectToDo12=Name=Jumper on VCC out of regulator for total current usage.~1Jumper on VIN before regulator to see power drop across regulator.|Owner=Chris|Category=Schematic / PCB|UID=VAJLETIN
-ProjectToDo13=Name=Ferrite bead on VCC from regulator?~1Add another large cap (47-100uF) to VCC?|Owner=Chris|Category=Design|UID=IWEOKRLG
-ProjectToDo14=Name=Add test points for 'scope probe connections. Both solder pads and 'loops'.~1See Freescale HCS12 board for the exact part number.~1These will be points that are not accesible via the edge connector.|Owner=Chris|Category=Schematic / PCB|UID=PTTGJGSL
-ProjectToDo15=Name=External connector (0.1" spacing?) for PC7 and PA7, TONEOUT and TONEIN respectively.~1These will eventually be /TXNE and /RXNE for USB communication, but for now they are GPIO|Owner=Chris|Category=Schematic / PCB|UID=ELKAXETK
+ProjectToDo13=Name=Ferrite bead on VCC from regulator?~1Add another large cap (47-100uF) to VCC?|State=1|Owner=Chris|Category=Design|UID=IWEOKRLG
+ProjectToDo14=Name=Add test points for 'scope probe connections. Both solder pads and 'loops'.~1See Freescale HCS12 board for the exact part number.~1These will be points that are not accesible via the edge connector.|State=1|Owner=Chris|Category=Schematic / PCB|UID=PTTGJGSL
+ProjectToDo15=Name=External connector (0.1" spacing?) for PC7 and PA7, TONEOUT and TONEIN respectively.~1These will eventually be /TXNE and /RXNE for USB communication, but for now they are GPIO|State=1|Owner=Chris|Category=Schematic / PCB|UID=ELKAXETK
 ProjectToDo16=Name=Serial EEPROM/Flash for program storage used by TAPEWR and TAPERD buttons and TONEOUT and TONEIN?~1Maybe not.|Owner=Chris|Category=Next Revision|UID=GEKXQFSF
 ProjectToDo17=Name=All '.Designator' shall be in the horizontal position on all PCB components|State=1|Owner=Chris|Category=PCB|UID=SEYFYAEV
-ProjectToDo18=Name=Add fiducials to PCB. One in each corner of PCB and two around each QFP. I think that will be enough.~1Check Dorigo / Proto Express websites to see what they would like for assembly.|Owner=Chris|Category=PCB|UID=CSBBSMXD
+ProjectToDo18=Name=Add fiducials to PCB. One in each corner of PCB and two around each QFP. I think that will be enough.~1Check Dorigo / Proto Express websites to see what they would like for assembly.|State=1|Owner=Chris|Category=PCB|UID=CSBBSMXD
 ProjectToDo19=Name=Add mounting holes, even if it is just two holes. Find where you could move the tracks around to fit this.|Owner=Chris|Category=PCB|UID=NQMWGYKG
 ProjectToDo20=Name=Power ON LED?|Owner=Chris|Category=Design|UID=AAYWAALG
 ProjectToDo21=Name=Move all components at least 200 mils from edge of PCB.~1All signal traces must be no more than 50 mils from edge of PCB.|Owner=Chris|Category=PCB|UID=NPLRWGGS
@@ -1586,8 +1849,8 @@ ProjectToDo24=Name=Add solder jumper to edge connector on VCC, so that extra tes
 ProjectToDo25=Name=Add layer stackup as Top to Bottom: Top Layer, Power, Ground, Bottom Layer. Ensure total PCB thickness is 0.62mm|State=1|Owner=Chris|Category=PCB|UID=EBCJUSDW
 ProjectToDo26=Name=Route power connections once PCB is made 4 layer.~1In a new revision I will aim for a 2 layer PCB.|State=1|Owner=Chris|Category=PCB|UID=KPTDTDSY
 ProjectToDo27=Name=Add actual document to PCB design.~1Include layer stackup legend, PCB routing instructions and dimensions.~1Use SRI format for reference.|State=1|Owner=Chris|Category=PCB|UID=GFCXQJPS
-ProjectToDo28=Name=Use SRI reference for build output files.|Owner=Chris|Category=Project Output|UID=JMIJFUGH
-ProjectToDo29=Name=PCB silkscreen fonts: Find a good font to work with|Priority=1|Owner=Chris|Category=PCB|UID=VCENURKA
+ProjectToDo28=Name=Use SRI reference for build output files.|State=1|Owner=Chris|Category=Project Output|UID=JMIJFUGH
+ProjectToDo29=Name=PCB silkscreen fonts: Find a good font to work with|Priority=1|State=1|Owner=Chris|Category=PCB|UID=VCENURKA
 ProjectToDo30=Name=Add VIN ranges in silkscreen|Owner=Chris|Category=PCB|UID=HSUCVHGL
 
 [Comparison Options]
