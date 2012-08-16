@@ -146,101 +146,25 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
-[GeneratedDocument1]
-DocumentPath=Project Outputs for minna_pcb_project\Design Rule Check - minna_pcb.html
-DItemRevisionGUID=
-
-[GeneratedDocument2]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument3]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBO
-DItemRevisionGUID=
-
-[GeneratedDocument4]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBP
-DItemRevisionGUID=
-
-[GeneratedDocument5]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GD1
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GG1
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GM1
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GM2
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GP1
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GP2
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GPB
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GPT
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTP
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument18]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.TXT
-DItemRevisionGUID=
-
-[GeneratedDocument19]
-DocumentPath=Project Outputs for minna_pcb_project\Pick Place for minna_pcb.txt
-DItemRevisionGUID=
-
 [Parameter1]
-Name=ProjectTitle
-Value=smari minna
+Name=CompanyEmail
+Value=info@populatealltheresistors.com
 
 [Parameter2]
-Name=ProjectRevision
-Value=v0.2
+Name=CompanyName
+Value=Populate All The Resistors
 
 [Parameter3]
 Name=ProjectAuthor
 Value=Chris Hettrick
 
 [Parameter4]
-Name=CompanyName
-Value=Populate All The Resistors
+Name=ProjectRevision
+Value=v0.2
 
 [Parameter5]
-Name=CompanyEmail
-Value=info@populatealltheresistors.com
+Name=ProjectTitle
+Value=smari minna
 
 [Generic_SmartPDF]
 AutoOpenFile=-1
