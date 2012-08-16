@@ -147,275 +147,79 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument2]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottom\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument3]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomoverlay\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument4]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottompaste\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument5]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomsolder\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\drill\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical1\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical2\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical12\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical13\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical14\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane1\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane2\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\top\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topoverlay\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\toppaste\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topsolder\attrlist
-DItemRevisionGUID=
-
-[GeneratedDocument18]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_bot\components
-DItemRevisionGUID=
-
-[GeneratedDocument19]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_top\components
-DItemRevisionGUID=
-
-[GeneratedDocument20]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\eda\data
-DItemRevisionGUID=
-
-[GeneratedDocument21]
 DocumentPath=Project Outputs for minna_pcb_project\Design Rule Check - minna_pcb.html
 DItemRevisionGUID=
 
-[GeneratedDocument22]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottom\features
-DItemRevisionGUID=
-
-[GeneratedDocument23]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomoverlay\features
-DItemRevisionGUID=
-
-[GeneratedDocument24]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottompaste\features
-DItemRevisionGUID=
-
-[GeneratedDocument25]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\bottomsolder\features
-DItemRevisionGUID=
-
-[GeneratedDocument26]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_bot\features
-DItemRevisionGUID=
-
-[GeneratedDocument27]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\comp_+_top\features
-DItemRevisionGUID=
-
-[GeneratedDocument28]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\drill\features
-DItemRevisionGUID=
-
-[GeneratedDocument29]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical1\features
-DItemRevisionGUID=
-
-[GeneratedDocument30]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical2\features
-DItemRevisionGUID=
-
-[GeneratedDocument31]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical12\features
-DItemRevisionGUID=
-
-[GeneratedDocument32]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical13\features
-DItemRevisionGUID=
-
-[GeneratedDocument33]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\mechanical14\features
-DItemRevisionGUID=
-
-[GeneratedDocument34]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane1\features
-DItemRevisionGUID=
-
-[GeneratedDocument35]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\plane2\features
-DItemRevisionGUID=
-
-[GeneratedDocument36]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\top\features
-DItemRevisionGUID=
-
-[GeneratedDocument37]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topoverlay\features
-DItemRevisionGUID=
-
-[GeneratedDocument38]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\toppaste\features
-DItemRevisionGUID=
-
-[GeneratedDocument39]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\topsolder\features
-DItemRevisionGUID=
-
-[GeneratedDocument40]
-DocumentPath=Project Outputs for minna_pcb_project\odb\matrix\matrix
-DItemRevisionGUID=
-
-[GeneratedDocument41]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.DRL
-DItemRevisionGUID=
-
-[GeneratedDocument42]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.DRR
-DItemRevisionGUID=
-
-[GeneratedDocument43]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument44]
+[GeneratedDocument2]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBL
 DItemRevisionGUID=
 
-[GeneratedDocument45]
+[GeneratedDocument3]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBO
 DItemRevisionGUID=
 
-[GeneratedDocument46]
+[GeneratedDocument4]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBP
 DItemRevisionGUID=
 
-[GeneratedDocument47]
+[GeneratedDocument5]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GBS
 DItemRevisionGUID=
 
-[GeneratedDocument48]
+[GeneratedDocument6]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GD1
 DItemRevisionGUID=
 
-[GeneratedDocument49]
+[GeneratedDocument7]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GG1
 DItemRevisionGUID=
 
-[GeneratedDocument50]
+[GeneratedDocument8]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GM1
 DItemRevisionGUID=
 
-[GeneratedDocument51]
+[GeneratedDocument9]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GM2
 DItemRevisionGUID=
 
-[GeneratedDocument52]
+[GeneratedDocument10]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GP1
 DItemRevisionGUID=
 
-[GeneratedDocument53]
+[GeneratedDocument11]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GP2
 DItemRevisionGUID=
 
-[GeneratedDocument54]
+[GeneratedDocument12]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GPB
 DItemRevisionGUID=
 
-[GeneratedDocument55]
+[GeneratedDocument13]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GPT
 DItemRevisionGUID=
 
-[GeneratedDocument56]
+[GeneratedDocument14]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTL
 DItemRevisionGUID=
 
-[GeneratedDocument57]
+[GeneratedDocument15]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTO
 DItemRevisionGUID=
 
-[GeneratedDocument58]
+[GeneratedDocument16]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTP
 DItemRevisionGUID=
 
-[GeneratedDocument59]
+[GeneratedDocument17]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.GTS
 DItemRevisionGUID=
 
-[GeneratedDocument60]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.LDP
-DItemRevisionGUID=
-
-[GeneratedDocument61]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.REP
-DItemRevisionGUID=
-
-[GeneratedDocument62]
-DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument63]
+[GeneratedDocument18]
 DocumentPath=Project Outputs for minna_pcb_project\minna_pcb.TXT
 DItemRevisionGUID=
 
-[GeneratedDocument64]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\netlists\cadnet\netlist
-DItemRevisionGUID=
-
-[GeneratedDocument65]
+[GeneratedDocument19]
 DocumentPath=Project Outputs for minna_pcb_project\Pick Place for minna_pcb.txt
-DItemRevisionGUID=
-
-[GeneratedDocument66]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\profile
-DItemRevisionGUID=
-
-[GeneratedDocument67]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\stephdr
-DItemRevisionGUID=
-
-[GeneratedDocument68]
-DocumentPath=Project Outputs for minna_pcb_project\odb\steps\pcb\layers\drill\tools
 DItemRevisionGUID=
 
 [Parameter1]
@@ -424,7 +228,7 @@ Value=smari minna
 
 [Parameter2]
 Name=ProjectRevision
-Value=v0.1
+Value=v0.2
 
 [Parameter3]
 Name=ProjectAuthor
