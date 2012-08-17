@@ -146,6 +146,10 @@ ClassGenCCAutoRoomEnabled=1
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
+[GeneratedDocument1]
+DocumentPath=Project Outputs for minna_pcb_project\Design Rule Check - minna_pcb.html
+DItemRevisionGUID=
+
 [Parameter1]
 Name=CompanyEmail
 Value=info@populatealltheresistors.com
