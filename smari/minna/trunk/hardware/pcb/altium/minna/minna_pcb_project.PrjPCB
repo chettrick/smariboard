@@ -151,24 +151,24 @@ DocumentPath=Project Outputs for minna_pcb_project\Design Rule Check - minna_pcb
 DItemRevisionGUID=
 
 [Parameter1]
-Name=CompanyEmail
-Value=info@populatealltheresistors.com
+Name=ProjectTitle
+Value=smari minna
 
 [Parameter2]
-Name=CompanyName
-Value=Populate All The Resistors
+Name=ProjectRevision
+Value=v0.3
 
 [Parameter3]
 Name=ProjectAuthor
 Value=Chris Hettrick
 
 [Parameter4]
-Name=ProjectRevision
-Value=v0.2
+Name=CompanyName
+Value=Populate All The Resistors
 
 [Parameter5]
-Name=ProjectTitle
-Value=smari minna
+Name=CompanyEmail
+Value=info@populatealltheresistors.com
 
 [Generic_SmartPDF]
 AutoOpenFile=-1
