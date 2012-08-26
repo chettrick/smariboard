@@ -116,18 +116,6 @@ ClassGenCCAutoRoomEnabled=0
 ClassGenNCAutoScope=None
 DItemRevisionGUID=
 
-[GeneratedDocument1]
-DocumentPath=Project Outputs for console_pcb_project\console_pcb_project.xls
-DItemRevisionGUID=
-
-[GeneratedDocument2]
-DocumentPath=Project Outputs for console_pcb_project\Design Rule Check - console_pcb.html
-DItemRevisionGUID=
-
-[GeneratedDocument3]
-DocumentPath=Project Outputs for console_pcb_project\Net Status - console_pcb.html
-DItemRevisionGUID=
-
 [OutputGroup1]
 Name=Netlist Outputs
 Description=
