@@ -1,0 +1,1 @@
+smari is an expandable z80 based computer designed for assembly language exploration while maintaining a small and portable form that utilizes surface mount components.
